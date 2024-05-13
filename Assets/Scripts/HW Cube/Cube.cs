@@ -15,6 +15,8 @@ class Cube : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
+        SetPropertiesForTheSelectedCube();
+
         if (_chanceCalculator.GetSuccessStatus(_attemptNumber))
         {
             _spawnCubes.CreateCubes(transform);
@@ -22,6 +24,11 @@ class Cube : MonoBehaviour
         }
 
         _attemptNumber++;
+    }
+
+    private void SetPropertiesForTheSelectedCube()
+    {
         gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<Collider>().enabled = false;
     }
 }

@@ -6,13 +6,18 @@ public class SpawnCubes : MonoBehaviour
 
     private float _scalingFactor = 2;
 
+    private int _minCount = 2;
+    private int _maxCount = 6;
+    private float _hueMin = 0f;
+    private float _hueMax = 1f;
+
     public void CreateCubes(Transform transform)
     {
-        int countCubes = Random.Range(2, 6);
+        int countCubes = Random.Range(_minCount, _maxCount);
 
         for (int i = 0; i < countCubes; i++)
         {
-            var color = Random.ColorHSV(0, 1);
+            var color = Random.ColorHSV(_hueMin, _hueMax);
             var cube = Instantiate(_prefab, transform.position, Quaternion.identity);
             cube.GetComponent<MeshRenderer>().material.color = color;
 
