@@ -3,17 +3,15 @@ using System.Collections.Generic;
 
 public class Explosion : MonoBehaviour
 {
-    [SerializeField] private float _explosionRadius;
-    [SerializeField] private float _explosionForce;
+    [SerializeField] private float _explosionRadius = 20f;
+    [SerializeField] private float _explosionForce = 500;
 
-    public void Explode(GameObject gameObject)
+    public void Explode(Rigidbody rigidbody)
     {
-        foreach (var item in GetExplodableObjects(gameObject.transform.position))
+        foreach (var item in GetExplodableObjects(rigidbody.transform.position))
             item.AddExplosionForce(_explosionForce,
-                gameObject.transform.position,
+                rigidbody.transform.position,
                 _explosionRadius);
-
-        Debug.Log("Explode");
     }
 
     private List<Rigidbody> GetExplodableObjects(Vector3 position)
