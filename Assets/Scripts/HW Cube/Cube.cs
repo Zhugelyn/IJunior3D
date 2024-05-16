@@ -35,8 +35,6 @@ public class Cube : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        GetComponent<Collider>().enabled = false;
-
         if (ChanceCalculator.GetSuccessStatus(SeparationFactor))
         {
             var cubes = _spawnCubes.CreateCubes(this);
