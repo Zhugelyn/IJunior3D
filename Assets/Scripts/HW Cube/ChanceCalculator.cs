@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class ChanceCalculator : MonoBehaviour
+public static class ChanceCalculator
 {
-    private int _initialChance = 1;
+    private static int _initialChance = 1;
 
-    public bool GetSuccessStatus(int coefficient)
+    public static bool GetSuccessStatus(int coefficient)
     {
-        var chance = Random.Range(_initialChance, coefficient);
+        int incrementedMaxValue = 1;
+        var chance = Random.Range(_initialChance, coefficient + incrementedMaxValue);
 
         return _initialChance == chance;
     }

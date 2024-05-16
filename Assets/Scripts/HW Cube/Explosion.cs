@@ -6,17 +6,18 @@ public class Explosion : MonoBehaviour
     [SerializeField] private float _explosionRadius = 20f;
     [SerializeField] private float _explosionForce = 500;
 
-    public void Explode(Rigidbody rigidbody)
+    public void Explode(Rigidbody rigidbody, List<Rigidbody> explodableObjects)
     {
-        foreach (var item in GetExplodableObjects(rigidbody.transform.position))
+        foreach (var item in explodableObjects)
             item.AddExplosionForce(_explosionForce,
                 rigidbody.transform.position,
                 _explosionRadius);
     }
 
-    public void Explode(Rigidbody rigidbody, List<Rigidbody> explodableObjects)
+    #region Неиспользуемые методы, ждут следующего задания.
+    public void Explode(Rigidbody rigidbody)
     {
-        foreach (var item in explodableObjects)
+        foreach (var item in GetExplodableObjects(rigidbody.transform.position))
             item.AddExplosionForce(_explosionForce,
                 rigidbody.transform.position,
                 _explosionRadius);
@@ -36,4 +37,6 @@ public class Explosion : MonoBehaviour
 
         return cubes;
     }
+
+    #endregion
 }
