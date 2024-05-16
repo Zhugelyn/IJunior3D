@@ -258,17 +258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a21f72353c3924eb0971052a59dce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &196915499 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4228084048102136679, guid: 4057b6f8c4d7f4747b5e757b304abec7, type: 3}
-  m_PrefabInstance: {fileID: 3912394686110823446}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a121ae30dbbf0cb4c96add44d3755631, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &467235089 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1247352676270903136, guid: 7ae7e0eaa20d9644884e9f0967c74216, type: 3}
@@ -538,7 +527,7 @@ Transform:
   m_GameObject: {fileID: 489513614}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 22.09, y: 13.19, z: 15.9}
+  m_LocalPosition: {x: 22.09, y: 10.65, z: 15.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -830,6 +819,7 @@ Transform:
   - {fileID: 697552562}
   - {fileID: 2140928940}
   - {fileID: 483567910}
+  - {fileID: 1949367346}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &697552561
@@ -1626,6 +1616,59 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ae7e0eaa20d9644884e9f0967c74216, type: 3}
+--- !u!1 &1949367345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1949367346}
+  - component: {fileID: 1949367347}
+  m_Layer: 3
+  m_Name: Cube (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1949367346
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949367345}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: -0.43, y: 5.62, z: 3.56}
+  m_LocalScale: {x: 1, y: 6, z: 10}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 641604638}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
+--- !u!65 &1949367347
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949367345}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1989008941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1788,19 +1831,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explosion
       objectReference: {fileID: 0}
-    - target: {fileID: 4228084048102136679, guid: 4057b6f8c4d7f4747b5e757b304abec7, type: 3}
-      propertyPath: _explosionForce
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 4305685808317756903, guid: 4057b6f8c4d7f4747b5e757b304abec7, type: 3}
-      propertyPath: _prefab
-      value: 
-      objectReference: {fileID: 6053272447683059350, guid: 8a4cbcd67dbaa1d42b941b7f701636c9, type: 3}
-    - target: {fileID: 6221525552522098817, guid: 4057b6f8c4d7f4747b5e757b304abec7, type: 3}
-      propertyPath: _attemptNumber
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4228084048102136679, guid: 4057b6f8c4d7f4747b5e757b304abec7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1856,11 +1888,15 @@ PrefabInstance:
     - target: {fileID: 6053272447683059350, guid: 8a4cbcd67dbaa1d42b941b7f701636c9, type: 3}
       propertyPath: _explosion
       value: 
-      objectReference: {fileID: 196915499}
+      objectReference: {fileID: 0}
     - target: {fileID: 6053272447683059350, guid: 8a4cbcd67dbaa1d42b941b7f701636c9, type: 3}
       propertyPath: _spawnCubes
       value: 
       objectReference: {fileID: 196915498}
+    - target: {fileID: 6053272447683059350, guid: 8a4cbcd67dbaa1d42b941b7f701636c9, type: 3}
+      propertyPath: explosionRadius
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6053272447683059350, guid: 8a4cbcd67dbaa1d42b941b7f701636c9, type: 3}
       propertyPath: separationFactor
       value: 1

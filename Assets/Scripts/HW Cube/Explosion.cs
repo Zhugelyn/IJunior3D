@@ -1,31 +1,31 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Explosion : MonoBehaviour
+public class Explosion
 {
-    [SerializeField] private float _explosionRadius = 20f;
-    [SerializeField] private float _explosionForce = 500;
+    private float minExplosionForce = 0;
 
-    public void Explode(Rigidbody rigidbody, List<Rigidbody> explodableObjects)
+    public void Explode(ExplodingObject explodingObject)
     {
-        foreach (var item in explodableObjects)
-            item.AddExplosionForce(_explosionForce,
-                rigidbody.transform.position,
-                _explosionRadius);
+        var rigidbody = explodingObject.GetComponent<Rigidbody>();
+        var position = rigidbody.transform.position;
+        var explosionRadius = explodingObject.explosionRadius;
+
+        foreach (var item in GetExplodableObjects(position, explosionRadius))
+        {
+
+            var explosionForce = CalculateExplosionForceFromDistance(position,
+                item.transform.position,
+                explosionRadius,
+                explodingObject.maxExplosionForce);
+
+            item.AddExplosionForce(explosionForce, position, explosionRadius);
+        }
     }
 
-    #region Неиспользуемые методы, ждут следующего задания.
-    public void Explode(Rigidbody rigidbody)
+    private List<Rigidbody> GetExplodableObjects(Vector3 position, float explosionRadius)
     {
-        foreach (var item in GetExplodableObjects(rigidbody.transform.position))
-            item.AddExplosionForce(_explosionForce,
-                rigidbody.transform.position,
-                _explosionRadius);
-    }
-
-    private List<Rigidbody> GetExplodableObjects(Vector3 position)
-    {
-        Collider[] hits = Physics.OverlapSphere(position, _explosionRadius);
+        Collider[] hits = Physics.OverlapSphere(position, explosionRadius);
 
         var cubes = new List<Rigidbody>();
 
@@ -38,5 +38,18 @@ public class Explosion : MonoBehaviour
         return cubes;
     }
 
-    #endregion
+    private float CalculateExplosionForceFromDistance(Vector3 firstPostion, 
+        Vector3 secondPosition, 
+        float explosionRadius, 
+        float maxExplosionForce)
+    {
+        var distance = Mathf.Abs(Vector3.Distance(firstPostion, secondPosition));
+
+        if (distance == 0)
+            return maxExplosionForce;
+
+        var delta = 1 - (distance / explosionRadius);
+
+        return Mathf.Lerp(minExplosionForce, maxExplosionForce, delta);
+    }
 }
