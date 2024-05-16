@@ -14,6 +14,14 @@ public class Explosion : MonoBehaviour
                 _explosionRadius);
     }
 
+    public void Explode(Rigidbody rigidbody, List<Rigidbody> explodableObjects)
+    {
+        foreach (var item in explodableObjects)
+            item.AddExplosionForce(_explosionForce,
+                rigidbody.transform.position,
+                _explosionRadius);
+    }
+
     private List<Rigidbody> GetExplodableObjects(Vector3 position)
     {
         Collider[] hits = Physics.OverlapSphere(position, _explosionRadius);

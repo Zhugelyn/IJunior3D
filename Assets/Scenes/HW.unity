@@ -537,13 +537,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489513614}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 23.13, y: 1.79, z: 21.23}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
+  m_LocalPosition: {x: 22.09, y: 13.19, z: 15.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!1 &517175872
 GameObject:
   m_ObjectHideFlags: 1
@@ -1788,6 +1788,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explosion
       objectReference: {fileID: 0}
+    - target: {fileID: 4228084048102136679, guid: 4057b6f8c4d7f4747b5e757b304abec7, type: 3}
+      propertyPath: _explosionForce
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305685808317756903, guid: 4057b6f8c4d7f4747b5e757b304abec7, type: 3}
+      propertyPath: _prefab
+      value: 
+      objectReference: {fileID: 6053272447683059350, guid: 8a4cbcd67dbaa1d42b941b7f701636c9, type: 3}
     - target: {fileID: 6221525552522098817, guid: 4057b6f8c4d7f4747b5e757b304abec7, type: 3}
       propertyPath: _attemptNumber
       value: 0
@@ -1853,6 +1861,10 @@ PrefabInstance:
       propertyPath: _spawnCubes
       value: 
       objectReference: {fileID: 196915498}
+    - target: {fileID: 6053272447683059350, guid: 8a4cbcd67dbaa1d42b941b7f701636c9, type: 3}
+      propertyPath: separationFactor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8150138085400975819, guid: 8a4cbcd67dbaa1d42b941b7f701636c9, type: 3}
       propertyPath: m_Name
       value: Cube
