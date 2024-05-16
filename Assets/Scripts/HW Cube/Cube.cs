@@ -46,6 +46,7 @@ public class Cube : MonoBehaviour
             var cubes = _spawnCubes.CreateCubes(this);
             var rigidbodies = GetRigidbodies(cubes);
             var rigidbody = GetComponent<Rigidbody>();
+
             _explosion.Explode(rigidbody, rigidbodies);
         }
 
