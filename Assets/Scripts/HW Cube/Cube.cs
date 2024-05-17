@@ -3,9 +3,10 @@
 [RequireComponent(typeof(MeshRenderer), 
     typeof(Collider),
     typeof(Rigidbody))]
-public class Cube : ExplodingObject
+public class Cube : MonoBehaviour
 {
     [SerializeField] private SpawnCubes _spawnCubes;
+    [SerializeField] private Explosion explosion;
 
     private int _divisionMultiplier = 2;
     private float _scalingFactor = 2;
@@ -17,6 +18,8 @@ public class Cube : ExplodingObject
     private int _increasieExplosionRadius = 1;
 
     public int SeparationFactor { get; private set; }
+    public int MaxExplosionForce { get; private set; }
+    public int ExplosionRadius { get; private set; }
 
     public void Init(Cube previousCube)
     {
@@ -29,16 +32,16 @@ public class Cube : ExplodingObject
         transform.localScale = scale;
 
         SeparationFactor = previousCube.SeparationFactor * _divisionMultiplier;
-        maxExplosionForce = previousCube.maxExplosionForce + _increaseExplosionForce;
-        explosionRadius = previousCube.explosionRadius + _increasieExplosionRadius;
+        MaxExplosionForce = previousCube.MaxExplosionForce + _increaseExplosionForce;
+        ExplosionRadius = previousCube.ExplosionRadius + _increasieExplosionRadius;
     }
 
     private void Awake()
     {
         explosion = new Explosion();
 
-        maxExplosionForce = 400;
-        explosionRadius = 2;
+        MaxExplosionForce = 400;
+        ExplosionRadius = 2;
 
         SeparationFactor = 1;
     }

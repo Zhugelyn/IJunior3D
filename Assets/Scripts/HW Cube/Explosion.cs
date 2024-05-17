@@ -1,15 +1,15 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Explosion
+public class Explosion : MonoBehaviour
 {
-    private float minExplosionForce = 0;
+    private float _minExplosionForce = 0;
 
-    public void Explode(ExplodingObject explodingObject)
+    public void Explode(Cube cube)
     {
-        var rigidbody = explodingObject.GetComponent<Rigidbody>();
+        var rigidbody = cube.GetComponent<Rigidbody>();
         var position = rigidbody.transform.position;
-        var explosionRadius = explodingObject.explosionRadius;
+        var explosionRadius = cube.ExplosionRadius;
 
         foreach (var item in GetExplodableObjects(position, explosionRadius))
         {
@@ -17,7 +17,7 @@ public class Explosion
             var explosionForce = CalculateExplosionForceFromDistance(position,
                 item.transform.position,
                 explosionRadius,
-                explodingObject.maxExplosionForce);
+                cube.MaxExplosionForce);
 
             item.AddExplosionForce(explosionForce, position, explosionRadius);
         }
@@ -50,6 +50,6 @@ public class Explosion
 
         var delta = 1 - (distance / explosionRadius);
 
-        return Mathf.Lerp(minExplosionForce, maxExplosionForce, delta);
+        return Mathf.Lerp(_minExplosionForce, maxExplosionForce, delta);
     }
 }

@@ -1492,6 +1492,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6624627126483597576, guid: 7f3c817db9fa7114dabd99e8dfc70181, type: 3}
   m_PrefabInstance: {fileID: 8447733685491075690}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1800067586 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3381981668170582330, guid: 4057b6f8c4d7f4747b5e757b304abec7, type: 3}
+  m_PrefabInstance: {fileID: 3912394686110823446}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a121ae30dbbf0cb4c96add44d3755631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1846313210 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1247352676270903136, guid: 7ae7e0eaa20d9644884e9f0967c74216, type: 3}
@@ -1831,8 +1842,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explosion
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4228084048102136679, guid: 4057b6f8c4d7f4747b5e757b304abec7, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1886,21 +1896,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6053272447683059350, guid: 8a4cbcd67dbaa1d42b941b7f701636c9, type: 3}
-      propertyPath: _explosion
+      propertyPath: explosion
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1800067586}
     - target: {fileID: 6053272447683059350, guid: 8a4cbcd67dbaa1d42b941b7f701636c9, type: 3}
       propertyPath: _spawnCubes
       value: 
       objectReference: {fileID: 196915498}
-    - target: {fileID: 6053272447683059350, guid: 8a4cbcd67dbaa1d42b941b7f701636c9, type: 3}
-      propertyPath: explosionRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6053272447683059350, guid: 8a4cbcd67dbaa1d42b941b7f701636c9, type: 3}
-      propertyPath: separationFactor
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8150138085400975819, guid: 8a4cbcd67dbaa1d42b941b7f701636c9, type: 3}
       propertyPath: m_Name
       value: Cube
