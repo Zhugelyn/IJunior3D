@@ -6,7 +6,7 @@
 public class Cube : MonoBehaviour
 {
     [SerializeField] private SpawnCubes _spawnCubes;
-    [SerializeField] private Explosion explosion;
+    [SerializeField] private Explosion _explosion;
 
     private int _divisionMultiplier = 2;
     private float _scalingFactor = 2;
@@ -23,8 +23,6 @@ public class Cube : MonoBehaviour
 
     public void Init(Cube previousCube)
     {
-        explosion = new Explosion();
-
         var color = Random.ColorHSV(_hueMin, _hueMax);
         GetComponent<MeshRenderer>().material.color = color;
 
@@ -38,7 +36,7 @@ public class Cube : MonoBehaviour
 
     private void Awake()
     {
-        explosion = new Explosion();
+        _explosion = new Explosion();
 
         MaxExplosionForce = 400;
         ExplosionRadius = 2;
@@ -53,7 +51,7 @@ public class Cube : MonoBehaviour
             _spawnCubes.CreateCubes(this);
         }
 
-        explosion.Explode(this);
+        _explosion.Explode(this);
 
         Destroy(gameObject);
     }
