@@ -2,13 +2,13 @@ using UnityEngine;
 
 public static class ChanceCalculator
 {
-    private static int _initialChance = 1;
+    private static float _startRange = 0;
+    private static float _endRange = 101;
 
-    public static bool GetSuccessStatus(int coefficient)
+    public static bool GetSuccessStatus(float coefficient)
     {
-        int incrementedMaxValue = 1;
-        var chance = Random.Range(_initialChance, coefficient + incrementedMaxValue);
+        var chance = Random.Range(_startRange, _endRange);
 
-        return _initialChance == chance;
+        return coefficient >= chance;
     }
 }

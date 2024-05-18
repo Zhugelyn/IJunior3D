@@ -5,21 +5,30 @@ public class Explosion : MonoBehaviour
 {
     private float _minExplosionForce = 0;
 
-    public void Explode(Cube cube)
+    public void Explode(Vector3 explosionPosition, float explosionRadius, float maxExplosionForce)
     {
-        var rigidbody = cube.GetComponent<Rigidbody>();
-        var position = rigidbody.transform.position;
-        var explosionRadius = cube.ExplosionRadius;
-
-        foreach (var item in GetExplodableObjects(position, explosionRadius))
+        foreach (var item in GetExplodableObjects(explosionPosition, explosionRadius))
         {
-
-            var explosionForce = CalculateExplosionForceFromDistance(position,
+            var explosionForce = CalculateExplosionForceFromDistance(explosionPosition,
                 item.transform.position,
                 explosionRadius,
-                cube.MaxExplosionForce);
+                maxExplosionForce);
 
-            item.AddExplosionForce(explosionForce, position, explosionRadius);
+            item.AddExplosionForce(explosionForce, explosionPosition, explosionRadius);
+        }
+    }
+
+    public void Explode(Vector3 explosionPosition, List<Cube> cubes)
+    {
+        foreach (var cube in cubes)
+        {
+            var rigidbody = cube.GetComponent<Rigidbody>();
+            var explosionForce = CalculateExplosionForceFromDistance(explosionPosition,
+                                                                cube.transform.position,
+                                                                cube.ExplosionRadius,
+                                                                cube.MaxExplosionForce);
+
+            rigidbody.AddExplosionForce(explosionForce, explosionPosition, cube.ExplosionRadius);
         }
     }
 
@@ -38,9 +47,9 @@ public class Explosion : MonoBehaviour
         return cubes;
     }
 
-    private float CalculateExplosionForceFromDistance(Vector3 firstPostion, 
-        Vector3 secondPosition, 
-        float explosionRadius, 
+    private float CalculateExplosionForceFromDistance(Vector3 firstPostion,
+        Vector3 secondPosition,
+        float explosionRadius,
         float maxExplosionForce)
     {
         var distance = Mathf.Abs(Vector3.Distance(firstPostion, secondPosition));

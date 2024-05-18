@@ -17,7 +17,7 @@ public class Cube : MonoBehaviour
     private int _increaseExplosionForce = 200;
     private int _increasieExplosionRadius = 1;
 
-    public int SeparationFactor { get; private set; }
+    public float SeparationFactor { get; private set; }
     public int MaxExplosionForce { get; private set; }
     public int ExplosionRadius { get; private set; }
 
@@ -29,29 +29,28 @@ public class Cube : MonoBehaviour
         var scale = previousCube.transform.localScale / _scalingFactor;
         transform.localScale = scale;
 
-        SeparationFactor = previousCube.SeparationFactor * _divisionMultiplier;
+        SeparationFactor = previousCube.SeparationFactor / _divisionMultiplier;
         MaxExplosionForce = previousCube.MaxExplosionForce + _increaseExplosionForce;
         ExplosionRadius = previousCube.ExplosionRadius + _increasieExplosionRadius;
     }
 
     private void Awake()
     {
-        _explosion = new Explosion();
-
         MaxExplosionForce = 400;
         ExplosionRadius = 2;
 
-        SeparationFactor = 1;
+        SeparationFactor = 100;
     }
 
     private void OnMouseUpAsButton()
     {
         if (ChanceCalculator.GetSuccessStatus(SeparationFactor))
         {
-            _spawnCubes.CreateCubes(this);
+            var cubes = _spawnCubes.CreateCubes(this);
+            _explosion.Explode(transform.position, cubes);
         }
 
-        _explosion.Explode(this);
+        _explosion.Explode(transform.position, ExplosionRadius, MaxExplosionForce);
 
         Destroy(gameObject);
     }

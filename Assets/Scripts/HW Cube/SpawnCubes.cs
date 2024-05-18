@@ -8,14 +8,19 @@ public class SpawnCubes : MonoBehaviour
     private int _minCount = 2;
     private int _maxCount = 6;
 
-    public void CreateCubes(Cube selectedCube)
+    public List<Cube> CreateCubes(Cube selectedCube)
     {
+        var cubes = new List<Cube>();
         int countCubes = Random.Range(_minCount, _maxCount);
 
         for (int i = 0; i < countCubes; i++)
         {
             var cube = Instantiate(_prefab, selectedCube.transform.position, Quaternion.identity);
             cube.Init(selectedCube);
+
+            cubes.Add(cube);
         }
+
+        return cubes;
     }
 }

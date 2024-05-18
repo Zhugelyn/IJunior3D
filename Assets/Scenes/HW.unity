@@ -1900,6 +1900,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1800067586}
     - target: {fileID: 6053272447683059350, guid: 8a4cbcd67dbaa1d42b941b7f701636c9, type: 3}
+      propertyPath: _explosion
+      value: 
+      objectReference: {fileID: 1800067586}
+    - target: {fileID: 6053272447683059350, guid: 8a4cbcd67dbaa1d42b941b7f701636c9, type: 3}
       propertyPath: _spawnCubes
       value: 
       objectReference: {fileID: 196915498}
@@ -1907,7 +1911,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2646666977264701103, guid: 8a4cbcd67dbaa1d42b941b7f701636c9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
