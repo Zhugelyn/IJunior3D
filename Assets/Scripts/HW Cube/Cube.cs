@@ -49,8 +49,10 @@ public class Cube : MonoBehaviour
             var cubes = _spawnCubes.CreateCubes(this);
             _explosion.Explode(transform.position, cubes);
         }
-
-        _explosion.Explode(transform.position, ExplosionRadius, MaxExplosionForce);
+        else
+        {
+            _explosion.Explode(transform.position, ExplosionRadius, MaxExplosionForce);
+        }
 
         Destroy(gameObject);
     }
